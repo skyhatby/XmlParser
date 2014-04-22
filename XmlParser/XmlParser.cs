@@ -11,11 +11,12 @@ namespace XmlParser
         public List<string> Parse(FileInfo fileInfo, string xPathExpression)
         {
             var str = new List<string>();
-            var tr = new XmlTextReader(fileInfo.FullName) {Namespaces = false};
+            var tr = new XmlTextReader(fileInfo.FullName) { Namespaces = false };
             var doc = new XPathDocument(tr);
             var nav = doc.CreateNavigator();
             var ex = nav.Compile(xPathExpression);
             str.AddRange(from object item in nav.Select(ex) select item.ToString());
+            if (str.Count == 0) str.Add("N/A");
             return str;
         }
     }
