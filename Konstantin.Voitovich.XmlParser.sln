@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlParser", "XmlParser\XmlP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlParserUI", "XmlParserUI\XmlParserUI.csproj", "{F4E0128E-96A5-4B7A-8A80-3B3BF0DE54A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlParserManager", "XmlParserManager\XmlParserManager.csproj", "{EAA8199F-A22C-4F5E-A8BE-DFBC1EFCF43D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F4E0128E-96A5-4B7A-8A80-3B3BF0DE54A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E0128E-96A5-4B7A-8A80-3B3BF0DE54A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E0128E-96A5-4B7A-8A80-3B3BF0DE54A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA8199F-A22C-4F5E-A8BE-DFBC1EFCF43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA8199F-A22C-4F5E-A8BE-DFBC1EFCF43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA8199F-A22C-4F5E-A8BE-DFBC1EFCF43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA8199F-A22C-4F5E-A8BE-DFBC1EFCF43D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
