@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading;
@@ -12,13 +13,13 @@ namespace XmlParserManager
         private string _directory;
         private string _expression;
         private int _threadsNum;
-        
-        public IEnumerable<string> Start()
+
+        public IEnumerable<Tuple<string,int>> Start()
         {
             Configure();
             var ca = FileQueueCreator.CreateFromDirectory(_directory);
             var str = new List<string>();
-
+            
             var prs = new XmlParser.XmlParser();
             foreach (var fileInfo in ca)
             {
@@ -26,7 +27,9 @@ namespace XmlParserManager
                 var task = Task.Run(() => prs.Parse(info,_expression));
                 str.AddRange(task.Result);
             }
-            return str.OrderByDescending(x=>x);
+            return str.GroupBy(x => x)
+                .Select(group => Tuple.Create(group.Key,group.Count()))
+                .OrderByDescending(x => x.Item2).ThenByDescending(x=>x.Item1);
         }
 
         private void Configure()

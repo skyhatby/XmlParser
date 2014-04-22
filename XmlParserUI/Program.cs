@@ -10,7 +10,7 @@ namespace XmlParserUI
             var s = c.Start();
             foreach (var item in s)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Item1+" "+item.Item2);
             }
             Console.ReadKey();
         }
