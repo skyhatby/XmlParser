@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using XmlParser;
@@ -11,13 +12,10 @@ namespace XmlParserManager
         private string _directory;
         private string _expression;
         private int _threadsNum;
-
         
-
         public IEnumerable<string> Start()
         {
             Configure();
-            ThreadPool.SetMaxThreads(_threadsNum, _threadsNum);
             var ca = FileQueueCreator.CreateFromDirectory(_directory);
             var str = new List<string>();
 
@@ -28,10 +26,16 @@ namespace XmlParserManager
                 var task = Task.Run(() => prs.Parse(info,_expression));
                 str.AddRange(task.Result);
             }
-            return str;
+            return str.OrderByDescending(x=>x);
         }
 
         private void Configure()
+        {
+            GetConfigs();
+            ThreadPool.SetMaxThreads(_threadsNum, _threadsNum);
+        }
+
+        private void GetConfigs()
         {
             _directory = ConfigurationManager.AppSettings.Get("directory");
             _expression = @"*/" + ConfigurationManager.AppSettings.Get("xPathExpression");
