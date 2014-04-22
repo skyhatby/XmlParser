@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace XmlParserUI
 {
@@ -7,11 +6,12 @@ namespace XmlParserUI
     {
         static void Main()
         {
-            
             var c = new XmlParserManager.XmlParserManager();
             var s = c.Start();
-            Console.WriteLine(s.Skip(1).FirstOrDefault());
-            
+            foreach (var item in s)
+            {
+                Console.WriteLine(item);
+            }
             Console.ReadKey();
         }
     }

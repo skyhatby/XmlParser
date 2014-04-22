@@ -8,13 +8,15 @@ namespace XmlParser
 {
     public class XmlParser
     {
-        public static void Parse(FileInfo fileInfo, List<string> str, string xPathExpression)
+        public List<string> Parse(FileInfo fileInfo, string xPathExpression)
         {
-            var tr = new XmlTextReader(fileInfo.FullName); 
+            var str = new List<string>();
+            var tr = new XmlTextReader(fileInfo.FullName) {Namespaces = false};
             var doc = new XPathDocument(tr);
             var nav = doc.CreateNavigator();
             var ex = nav.Compile(xPathExpression);
             str.AddRange(from object item in nav.Select(ex) select item.ToString());
+            return str;
         }
     }
 }
