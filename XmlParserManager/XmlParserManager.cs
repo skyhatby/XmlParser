@@ -12,18 +12,23 @@ namespace XmlParserManager
         private string _directory;
         private string _expression;
         private int _threadsNum;
+        private readonly IXmlParser _parser;
+
+        public XmlParserManager(IXmlParser parser)
+        {
+            _parser = parser;
+        }
 
         public IEnumerable<ResultModel> Start()
         {
             Configure();
             var ca = FileQueueCreator.CreateFromDirectory(_directory);
             var str = new List<string>();
-
-            var prs = new XmlParser.XmlParser();
+            
             foreach (var fileInfo in ca)
             {
                 var info = fileInfo;
-                var task = Task.Run(() => prs.Parse(info, _expression));
+                var task = Task.Run(() => _parser.Parse(info, _expression));
                 str.AddRange(task.Result);
             }
             return str.GroupBy(x => x)

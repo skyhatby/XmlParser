@@ -6,7 +6,7 @@ using System.Xml.XPath;
 
 namespace XmlParser
 {
-    public class XmlParser
+    public class XmlParser : IXmlParser
     {
         public List<string> Parse(FileInfo fileInfo, string xPathExpression)
         {

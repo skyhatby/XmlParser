@@ -6,7 +6,7 @@ namespace XmlParserUI
     {
         static void Main()
         {
-            var c = new XmlParserManager.XmlParserManager();
+            var c = new XmlParserManager.XmlParserManager(new XmlParser.XmlParser());
             var s = c.Start();
             foreach (var item in s)
             {

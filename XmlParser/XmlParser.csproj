@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileQueueCreator.cs" />
+    <Compile Include="IXmlParser.cs" />
     <Compile Include="XmlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

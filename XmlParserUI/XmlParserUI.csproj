@@ -52,6 +52,10 @@
       <Project>{eaa8199f-a22c-4f5e-a8be-dfbc1efcf43d}</Project>
       <Name>XmlParserManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XmlParser\XmlParser.csproj">
+      <Project>{b30660d6-2844-4ed6-b0fd-0246dfac94c8}</Project>
+      <Name>XmlParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
